@@ -5,7 +5,15 @@ import TodoList from "./components/todoList/TodoList";
 import DeleteBtn from "./components/deleteBtn/deleteBtn";
 
 const App = () => {
-  const [todos, setTodos] = useState([]);
+  const updateStorage = (newTodos) => {
+    localStorage.setItem("todos", JSON.stringify(newTodos));
+  };
+
+  const getFromStorage = () => {
+    return JSON.parse(localStorage.getItem("todos"));
+  };
+
+  const [todos, setTodos] = useState(getFromStorage() || []);
 
   const addTask = (task) => {
     let newTodos = [
@@ -17,6 +25,7 @@ const App = () => {
       },
     ];
 
+    updateStorage(newTodos);
     setTodos(newTodos);
   };
 
@@ -29,15 +38,18 @@ const App = () => {
       return todo;
     });
 
+    updateStorage(updatedTodos);
     setTodos(updatedTodos);
   };
 
   const removeTodo = (id) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
+    updateStorage(updatedTodos);
     setTodos(updatedTodos);
   };
 
   const removeAllTodo = () => {
+    updateStorage([]);
     setTodos([]);
   };
 
@@ -48,14 +60,14 @@ const App = () => {
         <span>Today i need To :</span>
       </h1>
 
-      {/* List All the Tasks */}
+      {/* List all the todos */}
       {todos.length > 0 ? (
         <TodoList todos={todos} toggleIsCompleted={toggleIsCompleted} removeTodo={removeTodo}></TodoList>
       ) : (
         <p className="emptylist">Your todo list is empty.</p>
       )}
 
-      {/* Delete All Todos at once */}
+      {/* Delete all todos at once */}
       {todos.length > 0 && <DeleteBtn removeAllTodo={removeAllTodo} />}
 
       {/* Adding new todo task form */}
