@@ -1,0 +1,17 @@
+.deleteBtn-wrapper {
+  margin-top: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.deleteBtn-wrapper label {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.deleteBtn-wrapper .deleteBtn-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}

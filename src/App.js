@@ -2,19 +2,16 @@ import React, { useState } from "react";
 import "./App.css";
 import Form from "./components/form/Form";
 import TodoList from "./components/todoList/TodoList";
-import ToggleBtn from "./components/toggleBtn/ToggleBtn";
+import DeleteBtn from "./components/deleteBtn/deleteBtn";
 
 const App = () => {
-  const [todos, setTodos] = useState([
-    { id: 1, task: "Learn React.js", isCompleted: false },
-    { id: 2, task: "Buy Apples", isCompleted: true },
-  ]);
+  const [todos, setTodos] = useState([]);
 
   const addTask = (task) => {
     let newTodos = [
       ...todos,
       {
-        id: todos.length + 1,
+        id: Date.now(),
         task,
         isCompleted: false,
       },
@@ -40,6 +37,10 @@ const App = () => {
     setTodos(updatedTodos);
   };
 
+  const removeAllTodo = () => {
+    setTodos([]);
+  };
+
   return (
     <main id="todolist">
       <h1>
@@ -54,8 +55,8 @@ const App = () => {
         <p className="emptylist">Your todo list is empty.</p>
       )}
 
-      {/* Move Completed Tasks at the end */}
-      {todos.length > 0 && <ToggleBtn />}
+      {/* Delete All Todos at once */}
+      {todos.length > 0 && <DeleteBtn removeAllTodo={removeAllTodo} />}
 
       {/* Adding new todo task form */}
       <Form addTask={addTask} />

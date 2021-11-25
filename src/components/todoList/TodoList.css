@@ -1,4 +1,8 @@
 .todolist_container {
   margin-top: 2.6rem;
   list-style: none;
+
+  max-height: 9rem;
+  overflow-y: auto;
+  overflow-x: hidden;
 }

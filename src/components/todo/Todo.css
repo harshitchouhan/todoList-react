@@ -1,6 +1,6 @@
 li {
   display: flex;
-  margin: 0 -3rem 4px;
+  margin: 0 -2rem 4px;
   padding: 1.1rem 3rem;
   justify-content: space-between;
   align-items: center;
@@ -39,6 +39,10 @@ li {
   -webkit-appearance: none;
   cursor: pointer;
   color: #fff;
+}
+
+.todolist-move {
+  transition: transform 1s;
 }
 
 @keyframes strikeitem {

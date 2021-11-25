@@ -1,6 +1,8 @@
 import React from "react";
 import Todo from "../todo/Todo";
 
+import './TodoList.css'
+
 const TodoList = ({ todos, toggleIsCompleted, removeTodo }) => {
   return (
     <ul className="todolist_container">
