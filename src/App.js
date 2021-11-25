@@ -19,8 +19,20 @@ const App = () => {
         isCompleted: false,
       },
     ];
-    
+
     setTodos(newTodos);
+  };
+
+  const toggleIsCompleted = (id) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        todo.isCompleted = !todo.isCompleted;
+      }
+
+      return todo;
+    });
+
+    setTodos(updatedTodos);
   };
 
   return (
@@ -31,7 +43,11 @@ const App = () => {
       </h1>
 
       {/* List All the Tasks */}
-      {todos.length > 0 ? <TodoList todos={todos}></TodoList> : <p className="emptylist">Your todo list is empty.</p>}
+      {todos.length > 0 ? (
+        <TodoList todos={todos} toggleIsCompleted={toggleIsCompleted}></TodoList>
+      ) : (
+        <p className="emptylist">Your todo list is empty.</p>
+      )}
 
       {/* Move Completed Tasks at the end */}
       {todos.length > 0 && <ToggleBtn />}
