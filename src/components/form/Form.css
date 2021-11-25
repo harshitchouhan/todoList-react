@@ -40,3 +40,7 @@ form button {
   font-family: 'Quicksand', sans-serif;
   height: 3rem;
 }
+
+form button:disabled {
+  opacity: .6;
+}

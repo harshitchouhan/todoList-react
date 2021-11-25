@@ -1,12 +1,28 @@
-import React from 'react';
-import './Form.css';
+import React, { useState } from "react";
+import "./Form.css";
 
-const Form = () => {
+const Form = ({ addTask }) => {
+  const [task, setTask] = useState("");
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    if (!task) {
+      alert("Enter a valid task");
+      return;
+    }
+
+    addTask(task);
+    setTask('')
+  };
+
   return (
-    <form>
-      <label htmlFor='newitem'>Add to the todo list</label>
-      <input type='text' name='newitem' id='newitem' />
-      <button type='submit'>Add item</button>
+    <form onSubmit={onSubmit}>
+      <label htmlFor="newitem">Add to the todo list</label>
+      <input type="text" name="newitem" id="newitem" value={task} onChange={(e) => setTask(e.target.value)} />
+      <button type="submit" disabled={!task}>
+        Add item
+      </button>
     </form>
   );
 };
