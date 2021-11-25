@@ -35,6 +35,11 @@ const App = () => {
     setTodos(updatedTodos);
   };
 
+  const removeTodo = (id) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  };
+
   return (
     <main id="todolist">
       <h1>
@@ -44,7 +49,7 @@ const App = () => {
 
       {/* List All the Tasks */}
       {todos.length > 0 ? (
-        <TodoList todos={todos} toggleIsCompleted={toggleIsCompleted}></TodoList>
+        <TodoList todos={todos} toggleIsCompleted={toggleIsCompleted} removeTodo={removeTodo}></TodoList>
       ) : (
         <p className="emptylist">Your todo list is empty.</p>
       )}

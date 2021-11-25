@@ -1,7 +1,7 @@
 import React from "react";
 import "./Todo.css";
 
-const Todo = ({ id, task, isCompleted, toggleIsCompleted }) => {
+const Todo = ({ id, task, isCompleted, toggleIsCompleted, removeTodo }) => {
   return (
     <li className={isCompleted ? "done" : ""}>
       <span className="label">{task}</span>
@@ -11,7 +11,7 @@ const Todo = ({ id, task, isCompleted, toggleIsCompleted }) => {
             {isCompleted ? "check_box" : "check_box_outline_blank"}
           </i>
         </button>
-        <button className="btn-picto" type="button" aria-label="Delete" title="Delete">
+        <button className="btn-picto" type="button" aria-label="Delete" title="Delete" onClick={() => removeTodo(id)}>
           <i aria-hidden="true" className="material-icons">
             delete
           </i>
