@@ -1,7 +1,4 @@
-import ReactDom from "react-dom";
+import ReactDom from 'react-dom';
+import App from './App';
 
-function Greetings() {
-  return <h4>React Boilerplate</h4>;
-}
-
-ReactDom.render(<Greetings></Greetings>, document.getElementById("root"));
+ReactDom.render(<App></App>, document.getElementById('root'));
