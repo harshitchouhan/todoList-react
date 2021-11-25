@@ -1,0 +1,48 @@
+li {
+  display: flex;
+  margin: 0 -3rem 4px;
+  padding: 1.1rem 3rem;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.actions {
+  flex-shrink: 0;
+  padding-left: 0.7em;
+}
+
+.label {
+  position: relative;
+  transition: opacity 0.2s linear;
+}
+
+.done .label {
+  opacity: 0.6;
+}
+
+.done .label:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -0.5rem;
+  display: block;
+  width: 0%;
+  height: 1px;
+  background: #fff;
+  animation: strikeitem 0.3s ease-out 0s forwards;
+}
+
+.btn-picto {
+  border: none;
+  background: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+@keyframes strikeitem {
+  to {
+    width: calc(100% + 1rem);
+  }
+}
